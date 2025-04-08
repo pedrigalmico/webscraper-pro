@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebScraper Pro - Test Interface</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-element {
+            margin: 10px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .button {
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .card {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .form-group {
+            margin: 10px 0;
+        }
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header class="test-section">
+        <h1>WebScraper Pro Test Interface</h1>
+        <p>Test your web scraping extension with these interactive examples</p>
+    </header>
+
+    <main>
+        <section class="test-section">
+            <h2>Basic Elements</h2>
+            <div class="test-element">
+                <h3>Button with Events</h3>
+                <button class="button" onclick="alert('Button clicked!')">Test Button</button>
+            </div>
+            <div class="test-element">
+                <h3>Styled Card</h3>
+                <div class="card">
+                    <h4>Test Card</h4>
+                    <p>This is a test card with hover effects.</p>
+                </div>
+            </div>
+            <div class="test-element">
+                <h3>Form Elements</h3>
+                <form onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Enter text">
+                    </div>
+                    <button type="submit" class="button">Submit</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="test-section">
+            <h2>Dynamic Content</h2>
+            <div class="test-element">
+                <h3>AJAX Content</h3>
+                <button class="button" onclick="loadContent()">Load Dynamic Content</button>
+                <div id="dynamic-content" class="card" style="margin-top: 10px;"></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const input = event.target.querySelector('input');
+            alert(`Form submitted with value: ${input.value}`);
+            input.value = '';
+        }
+
+        function loadContent() {
+            const content = document.getElementById('dynamic-content');
+            content.innerHTML = 'Loading...';
+            
+            fetch('/api/test-elements')
+                .then(response => response.json())
+                .then(data => {
+                    content.innerHTML = `
+                        <h4>Loaded Elements:</h4>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                })
+                .catch(error => {
+                    content.innerHTML = 'Error loading content';
+                });
+        }
+    </script>
+</body>
+</html> 

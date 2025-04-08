@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebScraper Pro</title>
+    <link href="/styles/popup.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4 w-80">
+    <div class="space-y-4">
+        <h1 class="text-xl font-bold text-gray-800">WebScraper Pro</h1>
+        
+        <div class="space-y-2">
+            <button id="startSelection" class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Start Selection
+            </button>
+            
+            <div id="extractedContent" class="hidden space-y-2">
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold mb-2">HTML</h2>
+                    <pre id="htmlOutput" class="text-sm bg-gray-100 p-2 rounded overflow-auto max-h-32"></pre>
+                </div>
+                
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold mb-2">CSS</h2>
+                    <pre id="cssOutput" class="text-sm bg-gray-100 p-2 rounded overflow-auto max-h-32"></pre>
+                </div>
+                
+                <div class="bg-white p-4 rounded shadow">
+                    <h2 class="font-semibold mb-2">JavaScript</h2>
+                    <pre id="jsOutput" class="text-sm bg-gray-100 p-2 rounded overflow-auto max-h-32"></pre>
+                </div>
+                
+                <button id="copyAll" class="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                    Copy All
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+</body>
+</html> 
